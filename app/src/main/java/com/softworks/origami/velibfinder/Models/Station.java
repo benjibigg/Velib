@@ -8,14 +8,17 @@ import java.util.Date;
 
 public class Station {
     private final String name;
-    private final String adress;
+    private final String address;
     private final int nbPlace;
-    private final Date lastUpdate;
 
-    public Station(String name, String adress, int nbPlace, Date lastUpdate) {
+    public Station(String name, String address, int nbPlace) {
         this.name = name;
-        this.adress = adress;
+        this.address = address;
         this.nbPlace = nbPlace;
-        this.lastUpdate = lastUpdate;
+    }
+
+    public String getAddress()
+    {
+        return address;
     }
 }
