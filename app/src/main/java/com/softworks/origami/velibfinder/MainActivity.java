@@ -1,5 +1,6 @@
 package com.softworks.origami.velibfinder;
 
+import android.content.Intent;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,25 +9,30 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.softworks.origami.velibfinder.AccessModel.StationFetcher;
 import com.softworks.origami.velibfinder.Components.StationListAdapter;
 import com.softworks.origami.velibfinder.Models.Station;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnClickListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private List<Station> stations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Station> stations = new ArrayList<>();
+        StationFetcher.getInstance().fakeGenerator();
+
+        stations = new ArrayList<>();
         for (int i = 0; i < 20; ++i)
         {
             stations.add(new Station("test", Integer.toString(i), 2));
@@ -36,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new StationListAdapter(stations);
+        mAdapter = new StationListAdapter(stations, this);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -59,5 +65,14 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String newText) {
         return false;
+    }
+
+    @Override
+    public void onClick(View view) {
+        int itemPosition = mRecyclerView.getChildLayoutPosition(view);
+        Station item = stations.get(itemPosition);
+        Intent intent = new Intent(this, DetailsActivity.class);
+        intent.putExtra("pos", itemPosition);
+        startActivity(intent);
     }
 }

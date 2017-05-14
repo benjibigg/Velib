@@ -18,10 +18,12 @@ import java.util.List;
 public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.ViewHolder>
 {
     private List<Station> items;
+    private final View.OnClickListener listener;
 
-    public StationListAdapter(List<Station> items)
+    public StationListAdapter(List<Station> items, View.OnClickListener listener)
     {
         this.items = items;
+        this.listener = listener;
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder
@@ -37,6 +39,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     public StationListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
     {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_layout, parent, false);
+        v.setOnClickListener(listener);
         return new ViewHolder(v);
     }
 
