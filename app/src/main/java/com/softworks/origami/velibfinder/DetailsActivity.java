@@ -18,21 +18,10 @@ import java.util.List;
  * Created by Benjamin on 14/05/2017.
  */
 
-public class DetailsActivity extends FragmentActivity {
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
+public class DetailsActivity extends FragmentActivity
+{
     private static final int NUM_PAGES = 5;
-
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
     private ViewPager mPager;
-
-    /**
-     * The pager adapter, which provides the pages to the view pager widget.
-     */
     private PagerAdapter mPagerAdapter;
     private List<Station> stations;
 
@@ -55,10 +44,6 @@ public class DetailsActivity extends FragmentActivity {
         }
     }
 
-    /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
-     * sequence.
-     */
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
         public ScreenSlidePagerAdapter(FragmentManager fm) {
             super(fm);
@@ -66,7 +51,11 @@ public class DetailsActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
-            return new DetailFragment();
+            DetailFragment fragment = new DetailFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("pos", position);
+            fragment.setArguments(bundle);
+            return fragment;
         }
 
         @Override
