@@ -32,11 +32,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         StationFetcher.getInstance().fakeGenerator();
 
-        stations = new ArrayList<>();
-        for (int i = 0; i < 20; ++i)
-        {
-            stations.add(new Station("test", Integer.toString(i), 2));
-        }
+        stations = StationFetcher.getInstance().stations;
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);

@@ -32,7 +32,7 @@ public class DetailFragment extends Fragment
             pos = bundle.getInt("pos", 0);
         }
         this.station = StationFetcher.getInstance().stations.get(pos);
-        
+
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.details_page, container, false);
         TextView text = (TextView)rootView.getRootView().findViewById(R.id.name);

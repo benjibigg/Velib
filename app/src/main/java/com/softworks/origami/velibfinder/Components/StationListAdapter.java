@@ -9,6 +9,8 @@ import android.widget.TextView;
 import com.softworks.origami.velibfinder.Models.Station;
 import com.softworks.origami.velibfinder.R;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -29,9 +31,14 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     static class ViewHolder extends RecyclerView.ViewHolder
     {
         private TextView address;
+        private TextView name;
+        private TextView places;
+
         public ViewHolder(View v) {
             super(v);
             address = (TextView) v.findViewById(R.id.item_address);
+            name = (TextView) v.findViewById(R.id.item_name);
+            places = (TextView) v.findViewById(R.id.item_place);
         }
     }
 
@@ -48,6 +55,8 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
         Station item = items.get(position);
         // save information in holder, we have one type in this adapter
         holder.address.setText(item.getAddress());
+        holder.name.setText(item.getName());
+        holder.places.setText(item.getNbPlace());
     }
 
     @Override

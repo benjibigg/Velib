@@ -33,10 +33,14 @@ public class StationFetcher
     public void fakeGenerator()
     {
         stations = new ArrayList<>();
-        for (int i = 0; i < 20; ++i)
-        {
-            stations.add(new Station("test", Integer.toString(i), 2));
-        }
+        stations.add(new Station("Abbesses", "Paris 18e", 1, 4));
+        stations.add(new Station("Alésia", "Paris 14e", 2, 4));
+        stations.add(new Station("Alexandre Dumas", "Paris 11e, Paris 20e", 3, 4));
+        stations.add(new Station("Alma - Marceau", "Paris 8e, Paris 16e", 2, 4));
+        stations.add(new Station("Anatole France", "Levallois-Perret", 4, 4));
+        stations.add(new Station("Anvers", "Paris 9e, Paris 18e", 2, 4));
+        stations.add(new Station("Argentine", "Paris 16e, Paris 17e", 1, 4));
+        stations.add(new Station("Arts et Métiers", "Paris 3e", 2, 4));
     }
 
     public void getStation()
