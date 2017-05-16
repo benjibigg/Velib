@@ -12,8 +12,6 @@ import com.softworks.origami.velibfinder.AccessModel.StationFetcher;
 import com.softworks.origami.velibfinder.Fragments.DetailFragment;
 import com.softworks.origami.velibfinder.Models.Station;
 
-import java.util.List;
-
 /**
  * Created by Benjamin on 14/05/2017.
  */
@@ -23,7 +21,7 @@ public class DetailsActivity extends FragmentActivity
     private static final int NUM_PAGES = 5;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
-    private List<Station> stations;
+    private Station stations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +58,7 @@ public class DetailsActivity extends FragmentActivity
 
         @Override
         public int getCount() {
-            return stations.size();
+            return stations.records.size();
         }
     }
 }

@@ -6,12 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.softworks.origami.velibfinder.Models.Station;
+import com.softworks.origami.velibfinder.Models.*;
 import com.softworks.origami.velibfinder.R;
-
-import org.w3c.dom.Text;
-
-import java.util.List;
 
 /**
  * Created by Benjamin on 12/05/2017.
@@ -19,10 +15,12 @@ import java.util.List;
 
 public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.ViewHolder>
 {
-    private List<Station> items;
+    private Station items;
     private final View.OnClickListener listener;
 
-    public StationListAdapter(List<Station> items, View.OnClickListener listener)
+
+
+    public StationListAdapter(Station items, View.OnClickListener listener)
     {
         this.items = items;
         this.listener = listener;
@@ -52,16 +50,16 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Station item = items.get(position);
-        // save information in holder, we have one type in this adapter
+        Fields item = items.records.get(position).fields;
         holder.address.setText(item.getAddress());
         holder.name.setText(item.getName());
-        holder.places.setText(item.getNbPlace());
+        holder.places.setText(item.getBike_stands());
+        // save information in holder, we have one type in this adapter
     }
 
     @Override
     public int getItemCount()
     {
-        return items.size();
+        return items.records.size();
     }
 }

@@ -1,9 +1,9 @@
 package com.softworks.origami.velibfinder;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
@@ -13,25 +13,22 @@ import android.view.View;
 
 import com.softworks.origami.velibfinder.AccessModel.StationFetcher;
 import com.softworks.origami.velibfinder.Components.StationListAdapter;
+import com.softworks.origami.velibfinder.Models.Fields;
 import com.softworks.origami.velibfinder.Models.Station;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnClickListener {
 
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private List<Station> stations;
+    private Station stations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        StationFetcher.getInstance().fakeGenerator();
-
+        StationFetcher.getInstance().getStation();
         stations = StationFetcher.getInstance().stations;
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public void onClick(View view) {
         int itemPosition = mRecyclerView.getChildLayoutPosition(view);
-        Station item = stations.get(itemPosition);
+        Fields item = stations.records.get(itemPosition).fields;
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra("pos", itemPosition);
         startActivity(intent);

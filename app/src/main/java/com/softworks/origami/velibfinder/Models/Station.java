@@ -1,30 +1,30 @@
 package com.softworks.origami.velibfinder.Models;
 
-import java.util.Date;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Created by Benjamin on 12/05/2017.
  */
 
 public class Station {
-    private final String name;
-    private final String address;
-    private final int nbPlace;
-    private final int nbPlaceDispo;
 
-    public Station(String name, String address, int nbPlace, int nbPlaceDispo) {
+    @SerializedName("records")
+    public List<Records> records;
+
+    //public Station(LRecords records) { this.records = records; }
+    /*
+    public Station(String name, String address, boolean open, int bike_stands, int available_bike_stands, Date lastUpdate) {
         this.name = name;
         this.address = address;
-        this.nbPlace = nbPlace;
-        this.nbPlaceDispo = nbPlaceDispo;
+        this.open = open;
+        this.bike_stands = bike_stands;
+        this.available_bike_stands = available_bike_stands;
+        this.lastUpdate = lastUpdate;
     }
-
-    public String getAddress()
-    {
-        return address;
-    }
-
-    public String getName() { return name; }
-
-    public String getNbPlace() { return nbPlace + "/" + nbPlaceDispo; }
+    */
 }
+
+
+

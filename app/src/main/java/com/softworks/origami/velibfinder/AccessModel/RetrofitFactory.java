@@ -8,14 +8,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitFactory {
-    public static final String BASE_URL = "http://api.themoviedb.org/3/";
+    //public static final String BASE_URL = "https://opendata.paris.fr";
     private static Retrofit retrofit = null;
 
     public static Retrofit getInstance()
     {
         if (retrofit == null)
         {
-            Retrofit retrofit = new Retrofit.Builder()
+            retrofit = new Retrofit.Builder()
                     .baseUrl(RetrofitService.ENDPOINT)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();

@@ -31,12 +31,12 @@ public class DetailFragment extends Fragment
         if (bundle != null) {
             pos = bundle.getInt("pos", 0);
         }
-        this.station = StationFetcher.getInstance().stations.get(pos);
+        this.station = StationFetcher.getInstance().stations;
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.details_page, container, false);
         TextView text = (TextView)rootView.getRootView().findViewById(R.id.name);
-        text.setText(station.getAddress());
+        //text.setText(station.r.getAddress());
         return rootView;
     }
 }

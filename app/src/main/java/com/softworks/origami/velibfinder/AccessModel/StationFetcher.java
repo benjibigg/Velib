@@ -4,9 +4,6 @@ import android.util.Log;
 
 import com.softworks.origami.velibfinder.Models.Station;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,9 +16,11 @@ public class StationFetcher
 {
     private static final String TAG = "StationFetcher";
 
-    private static StationFetcher fetcher;
+    private static StationFetcher fetcher = null;
 
-    public List<Station> stations;
+    public Station stations;
+
+    public Call<Station> stationList;
 
     public static StationFetcher getInstance()
     {
@@ -30,6 +29,7 @@ public class StationFetcher
         return fetcher;
     }
 
+    /*
     public void fakeGenerator()
     {
         stations = new ArrayList<>();
@@ -42,29 +42,31 @@ public class StationFetcher
         stations.add(new Station("Argentine", "Paris 16e, Paris 17e", 1, 4));
         stations.add(new Station("Arts et Métiers", "Paris 3e", 2, 4));
     }
+    */
 
     public void getStation()
     {
         RetrofitService retrofitService = RetrofitFactory.getInstance().create(RetrofitService.class);
-        Call<List<Station>> stationList = retrofitService.listRepos("square");
-
-        stationList.enqueue(new Callback<List<Station>>() {
+        stationList = retrofitService.stationList();
+        stationList.enqueue(new Callback<Station>() {
             @Override
-            public void onResponse(Call<List<Station>> call, Response<List<Station>> response) {
-                if(response.isSuccessful())
-                {
-                    stations = response.body();
-                }
-                else
-                {
-                    Log.e(TAG, "Error while fetching data. Swallowing the exception.");
-                }
+            public void onResponse(Call<Station> call, Response<Station> response) {
+                if(response.isSuccessful()) { stations = response.body(); }
+                else { Log.e(TAG, "Error while fetching data. Swallowing the exception."); }
             }
 
             @Override
-            public void onFailure(Call<List<Station>> call, Throwable t) {
+            public void onFailure(Call<Station> call, Throwable t) {
                 Log.e(TAG, "Error while fetching data. Swallowing the exception.");
             }
         });
+        try {
+            stationList.execute();
+        }
+        catch (Exception e) {
+            Log.e(TAG, "Error while fetching data. Swallowing the exception.");
+        }
+
+
     }
 }
