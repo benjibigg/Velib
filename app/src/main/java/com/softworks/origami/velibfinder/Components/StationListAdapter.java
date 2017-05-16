@@ -20,10 +20,15 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
 
 
-    public StationListAdapter(Station items, View.OnClickListener listener)
+    public StationListAdapter(View.OnClickListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public void setStations(Station items)
     {
         this.items = items;
-        this.listener = listener;
+        notifyDataSetChanged();
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder
@@ -60,6 +65,8 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     @Override
     public int getItemCount()
     {
+        if (items == null)
+            return 0;
         return items.records.size();
     }
 }

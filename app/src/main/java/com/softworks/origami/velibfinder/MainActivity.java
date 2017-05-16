@@ -19,7 +19,7 @@ import com.softworks.origami.velibfinder.Models.Station;
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnClickListener {
 
     private RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
+    private StationListAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private Station stations;
 
@@ -28,15 +28,16 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        StationFetcher.getInstance().getStation();
-        stations = StationFetcher.getInstance().stations;
-
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new StationListAdapter(stations, this);
+        mAdapter = new StationListAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
+
+        StationFetcher.getInstance().getStations();
+
+        StationFetcher.getInstance().stationList.subscribe( stations -> mAdapter.setStations(stations));
     }
 
     @Override

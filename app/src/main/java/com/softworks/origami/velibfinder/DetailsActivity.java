@@ -28,7 +28,7 @@ public class DetailsActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        stations = StationFetcher.getInstance().stations;
+        stations = StationFetcher.getInstance().stationList.getValue();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);

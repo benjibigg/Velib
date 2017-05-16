@@ -1,6 +1,7 @@
 package com.softworks.origami.velibfinder.AccessModel;
 
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
@@ -18,6 +19,7 @@ public class RetrofitFactory {
             retrofit = new Retrofit.Builder()
                     .baseUrl(RetrofitService.ENDPOINT)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
         }
 

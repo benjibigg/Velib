@@ -31,7 +31,7 @@ public class DetailFragment extends Fragment
         if (bundle != null) {
             pos = bundle.getInt("pos", 0);
         }
-        this.station = StationFetcher.getInstance().stations;
+        this.station = StationFetcher.getInstance().stationList.getValue();
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.details_page, container, false);

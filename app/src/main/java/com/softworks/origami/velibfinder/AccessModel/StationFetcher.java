@@ -7,6 +7,10 @@ import com.softworks.origami.velibfinder.Models.Station;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+import rx.subjects.BehaviorSubject;
 
 /**
  * Created by Benjamin on 12/05/2017.
@@ -18,9 +22,7 @@ public class StationFetcher
 
     private static StationFetcher fetcher = null;
 
-    public Station stations;
-
-    public Call<Station> stationList;
+    public BehaviorSubject<Station> stationList = BehaviorSubject.create();
 
     public static StationFetcher getInstance()
     {
@@ -44,29 +46,11 @@ public class StationFetcher
     }
     */
 
-    public void getStation()
-    {
-        RetrofitService retrofitService = RetrofitFactory.getInstance().create(RetrofitService.class);
-        stationList = retrofitService.stationList();
-        stationList.enqueue(new Callback<Station>() {
-            @Override
-            public void onResponse(Call<Station> call, Response<Station> response) {
-                if(response.isSuccessful()) { stations = response.body(); }
-                else { Log.e(TAG, "Error while fetching data. Swallowing the exception."); }
-            }
-
-            @Override
-            public void onFailure(Call<Station> call, Throwable t) {
-                Log.e(TAG, "Error while fetching data. Swallowing the exception.");
-            }
-        });
-        try {
-            stationList.execute();
-        }
-        catch (Exception e) {
-            Log.e(TAG, "Error while fetching data. Swallowing the exception.");
-        }
-
-
+    public void getStations() {
+        RetrofitFactory.getInstance().create(RetrofitService.class)
+            .stationList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(stations -> stationList.onNext(stations));
     }
 }
