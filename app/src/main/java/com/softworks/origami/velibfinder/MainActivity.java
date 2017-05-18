@@ -13,7 +13,6 @@ import android.view.View;
 
 import com.softworks.origami.velibfinder.AccessModel.StationFetcher;
 import com.softworks.origami.velibfinder.Components.StationListAdapter;
-import com.softworks.origami.velibfinder.Models.Fields;
 import com.softworks.origami.velibfinder.Models.Station;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnClickListener {
@@ -84,15 +83,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         Intent intent = new Intent(this, DetailsActivity.class);
         intent.putExtra("pos", itemPosition);
         startActivity(intent);
-    }
-
-    public void fillIntent(Intent i , Fields item)
-    {
-        i.putExtra("name", item.getName());
-        i.putExtra("status", item.isOpen());
-        i.putExtra("available", item.getAvailableBikeStand());
-        i.putExtra("adresse", item.getAddress());
-        i.putExtra("last_update", item.getDate());
     }
 
     public void showMembers()

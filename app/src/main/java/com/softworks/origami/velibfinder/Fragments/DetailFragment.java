@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +63,27 @@ public class DetailFragment extends Fragment
 
         ViewGroup rootView = (ViewGroup) inflater.inflate(
                 R.layout.details_page, container, false);
-        TextView text = (TextView)rootView.getRootView().findViewById(R.id.name);
-        text.setText(station.records.get(pos).fields.getAddress());
+
+        setFragment(rootView, pos);
         return rootView;
+    }
+
+    private void setFragment(ViewGroup rootView, int pos)
+    {
+        TextView name = (TextView) rootView.getRootView().findViewById(R.id.name);
+        name.setText(station.records.get(pos).fields.getAddress());
+
+        TextView status = (TextView)rootView.getRootView().findViewById(R.id.status);
+        status.setText(station.records.get(pos).fields.isOpen().toString());
+
+        TextView bike_stands = (TextView)rootView.getRootView().findViewById(R.id.bike_stands);
+        bike_stands.setText(station.records.get(pos).fields.getAvailableBikeStand());
+
+        TextView address = (TextView)rootView.getRootView().findViewById(R.id.address);
+        address.setText(station.records.get(pos).fields.getAddress());
+
+        TextView last_update  = (TextView)rootView.getRootView().findViewById(R.id.last_update);
+        last_update.setText(station.records.get(pos).fields.getLastUpdate());
+
     }
 }

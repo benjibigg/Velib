@@ -38,7 +38,7 @@ public class Fields {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getDate() {
+    public String getLastUpdate() {
         SimpleDateFormat simpleDate =  new SimpleDateFormat("dd/MM/yyyy");
         return simpleDate.format(lastUpdate);
     }
