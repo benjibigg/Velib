@@ -19,8 +19,6 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     private Station items;
     private final View.OnClickListener listener;
 
-
-
     public StationListAdapter(View.OnClickListener listener)
     {
         this.listener = listener;

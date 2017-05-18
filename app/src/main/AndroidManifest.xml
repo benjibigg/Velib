@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity">
+        <activity android:name=".DetailsActivity"
+            android:label="Velib Finder">
         </activity>
         <activity android:name=".MembersActivity"
             android:label="@string/group_members">

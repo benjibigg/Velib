@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
 
+        super.onCreateOptionsMenu(menu);
+
         final MenuItem searchItem = menu.findItem(R.id.action_search);
         final SearchView searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         searchView.setOnQueryTextListener(this);
@@ -79,9 +81,8 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public void onClick(View view) {
         int itemPosition = mRecyclerView.getChildLayoutPosition(view);
-        Fields item = mAdapter.getStations().records.get(itemPosition).fields;
         Intent intent = new Intent(this, DetailsActivity.class);
-        fillIntent(intent, item);
+        intent.putExtra("pos", itemPosition);
         startActivity(intent);
     }
 
