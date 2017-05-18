@@ -17,7 +17,7 @@ public class Fields {
     private final String address;
 
     @SerializedName("status")
-    private final boolean open;
+    private final String status;
 
     @SerializedName("available_bike_stands")
     private final int bike_stands;
@@ -28,11 +28,11 @@ public class Fields {
     @SerializedName("last_update")
     private final Date lastUpdate;
 
-    public Fields(String name, String address, boolean open, int bike_stands,
+    public Fields(String name, String address, String status, int bike_stands,
                   int available_bike_stands, Date lastUpdate) {
         this.name = name;
         this.address = address;
-        this.open = open;
+        this.status = status;
         this.bike_stands = bike_stands;
         this.available_bike_stands = available_bike_stands;
         this.lastUpdate = lastUpdate;
@@ -43,7 +43,7 @@ public class Fields {
         return simpleDate.format(lastUpdate);
     }
 
-    public String getOpen() { return open ? "Ouvert" : "Fermé"; }
+    public Boolean isOpen() { return status.equals("OPEN"); }
 
     public String getAddress()
     {
@@ -52,5 +52,5 @@ public class Fields {
 
     public String getName() { return name; }
 
-    public String getBike_stands() { return bike_stands + "/" + available_bike_stands; }
+    public String getBike_stands() { return available_bike_stands + "/" + bike_stands; }
 }
