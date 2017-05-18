@@ -37,7 +37,10 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         StationFetcher.getInstance().getStations();
 
-        StationFetcher.getInstance().stationList.subscribe( stations -> mAdapter.setStations(stations));
+        StationFetcher.getInstance().stationList.subscribe( stations -> {
+            mAdapter.setStations(stations);
+            findViewById(R.id.loading).setVisibility(View.GONE);
+        });
     }
 
     @Override
@@ -49,6 +52,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         searchView.setOnQueryTextListener(this);
 
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.members:
+                showMembers();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -77,5 +92,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         i.putExtra("available", item.getAvailableBikeStand());
         i.putExtra("adresse", item.getAddress());
         i.putExtra("last_update", item.getDate());
+    }
+
+    public void showMembers()
+    {
+        Intent intent = new Intent(this, MembersActivity.class);
+        startActivity(intent);
     }
 }

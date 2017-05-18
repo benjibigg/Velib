@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="action_search">Rechercher</string>
+    <string name="group_members">Membres du groupe</string>
+    <string name="loading">Chargement ...</string>
+    <string name="app_name"></string>
 </resources>
