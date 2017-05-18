@@ -32,6 +32,11 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
         notifyDataSetChanged();
     }
 
+    public Station getStations()
+    {
+        return this.items;
+    }
+
     static class ViewHolder extends RecyclerView.ViewHolder
     {
         private TextView address;
@@ -61,7 +66,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
         Fields item = items.records.get(position).fields;
         holder.address.setText(item.getAddress());
         holder.name.setText(item.getName());
-        holder.places.setText(item.getBike_stands());
+        holder.places.setText(item.getAvailableBikeStand());
 
         if (item.isOpen())
         {

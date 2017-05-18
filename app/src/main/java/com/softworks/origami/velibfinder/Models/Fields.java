@@ -52,5 +52,5 @@ public class Fields {
 
     public String getName() { return name; }
 
-    public String getBike_stands() { return available_bike_stands + "/" + bike_stands; }
+    public String getAvailableBikeStand() { return available_bike_stands + "/" + bike_stands; }
 }

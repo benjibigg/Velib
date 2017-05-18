@@ -39,6 +39,12 @@ public class DetailsActivity extends FragmentActivity
         if (extras != null) {
             int pos = extras.getInt("pos");
             mPager.setCurrentItem(pos);
+
+            String name = extras.getString("name");
+            Boolean isOpen = extras.getBoolean("status");
+            String available = extras.getString("available");
+            String adresse = extras.getString("adresse");
+            String last_update = extras.getString("last_update");
         }
     }
 

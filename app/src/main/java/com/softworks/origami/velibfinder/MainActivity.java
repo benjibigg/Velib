@@ -64,9 +64,18 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public void onClick(View view) {
         int itemPosition = mRecyclerView.getChildLayoutPosition(view);
-        Fields item = stations.records.get(itemPosition).fields;
+        Fields item = mAdapter.getStations().records.get(itemPosition).fields;
         Intent intent = new Intent(this, DetailsActivity.class);
-        intent.putExtra("pos", itemPosition);
+        fillIntent(intent, item);
         startActivity(intent);
+    }
+
+    public void fillIntent(Intent i , Fields item)
+    {
+        i.putExtra("name", item.getName());
+        i.putExtra("status", item.isOpen());
+        i.putExtra("available", item.getAvailableBikeStand());
+        i.putExtra("adresse", item.getAddress());
+        i.putExtra("last_update", item.getDate());
     }
 }
