@@ -1,6 +1,7 @@
 package com.softworks.origami.velibfinder.Fragments;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,12 +20,10 @@ import com.softworks.origami.velibfinder.R;
  * Created by Benjamin on 14/05/2017.
  */
 
-public class DetailFragment extends Fragment
-{
+public class DetailFragment extends Fragment {
     Station station;
 
-    public DetailFragment()
-    {
+    public DetailFragment() {
     }
 
     @Override
@@ -45,8 +44,7 @@ public class DetailFragment extends Fragment
         }
     }
 
-    public void showMembers()
-    {
+    public void showMembers() {
         Intent intent = new Intent(getActivity(), MembersActivity.class);
         startActivity(intent);
     }
@@ -68,21 +66,26 @@ public class DetailFragment extends Fragment
         return rootView;
     }
 
-    private void setFragment(ViewGroup rootView, int pos)
-    {
+    private void setFragment(ViewGroup rootView, int pos) {
         TextView name = (TextView) rootView.getRootView().findViewById(R.id.name);
         name.setText(station.records.get(pos).fields.getAddress());
 
-        TextView status = (TextView)rootView.getRootView().findViewById(R.id.status);
+        TextView status = (TextView) rootView.getRootView().findViewById(R.id.status);
         status.setText(station.records.get(pos).fields.isOpen().toString());
 
-        TextView bike_stands = (TextView)rootView.getRootView().findViewById(R.id.bike_stands);
+        TextView bike_stands = (TextView) rootView.getRootView().findViewById(R.id.bike_stands);
         bike_stands.setText(station.records.get(pos).fields.getAvailableBikeStand());
 
-        TextView address = (TextView)rootView.getRootView().findViewById(R.id.address);
+        TextView address = (TextView) rootView.getRootView().findViewById(R.id.address);
         address.setText(station.records.get(pos).fields.getAddress());
+        address.setOnClickListener(v -> {
+            String uri = "geo:0,0?q=" + address.getText().toString();
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+            startActivity(intent);
+        });
 
-        TextView last_update  = (TextView)rootView.getRootView().findViewById(R.id.last_update);
+        TextView last_update = (TextView) rootView.getRootView().findViewById(R.id.last_update);
         last_update.setText(station.records.get(pos).fields.getLastUpdate());
 
     }
