@@ -13,6 +13,7 @@ import android.view.View;
 
 import com.softworks.origami.velibfinder.AccessModel.StationFetcher;
 import com.softworks.origami.velibfinder.Components.StationListAdapter;
+import com.softworks.origami.velibfinder.Models.Records;
 import com.softworks.origami.velibfinder.Models.Station;
 
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener, View.OnClickListener {
@@ -20,17 +21,19 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private RecyclerView mRecyclerView;
     private StationListAdapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Station stations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
+
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
         mAdapter = new StationListAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
 
@@ -38,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         StationFetcher.getInstance().stationList.subscribe( stations -> {
             mAdapter.setStations(stations);
+            mAdapter.original = Station.copy(stations);
             findViewById(R.id.loading).setVisibility(View.GONE);
         });
     }
@@ -69,11 +73,32 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        /*
+        displayedStations.records.clear();
+        for (Records record : mAdapter.getStations().records)
+        {
+            String address =  record.fields.getAddress();
+            if (address.toLowerCase().contains(query.toLowerCase()))
+                displayedStations.records.add(record);
+
+        }
+        mAdapter.setStations(displayedStations);
+        */
         return false;
+
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
+        Station displayedStations = mAdapter.getStations();
+        displayedStations.records.clear();
+        for (Records record : mAdapter.original.records)
+        {
+            String address =  record.fields.address;
+            if (address.toLowerCase().contains(newText.toLowerCase()))
+                displayedStations.records.add(record);
+        }
+        mAdapter.setStations(displayedStations);
         return false;
     }
 
@@ -84,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         intent.putExtra("pos", itemPosition);
         startActivity(intent);
     }
+
 
     public void showMembers()
     {

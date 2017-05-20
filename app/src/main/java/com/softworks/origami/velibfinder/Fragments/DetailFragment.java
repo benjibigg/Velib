@@ -68,7 +68,7 @@ public class DetailFragment extends Fragment {
 
     private void setFragment(ViewGroup rootView, int pos) {
         TextView name = (TextView) rootView.getRootView().findViewById(R.id.name);
-        name.setText(station.records.get(pos).fields.getAddress());
+        name.setText(station.records.get(pos).fields.address);
 
         TextView status = (TextView) rootView.getRootView().findViewById(R.id.status);
         status.setText(station.records.get(pos).fields.isOpen().toString());
@@ -77,7 +77,7 @@ public class DetailFragment extends Fragment {
         bike_stands.setText(station.records.get(pos).fields.getAvailableBikeStand());
 
         TextView address = (TextView) rootView.getRootView().findViewById(R.id.address);
-        address.setText(station.records.get(pos).fields.getAddress());
+        address.setText(station.records.get(pos).fields.address);
         address.setOnClickListener(v -> {
             String uri = "geo:0,0?q=" + address.getText().toString();
             Intent intent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));

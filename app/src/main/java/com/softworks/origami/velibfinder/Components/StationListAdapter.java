@@ -7,7 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.softworks.origami.velibfinder.Models.*;
+import com.softworks.origami.velibfinder.Models.Fields;
+import com.softworks.origami.velibfinder.Models.Station;
 import com.softworks.origami.velibfinder.R;
 
 /**
@@ -19,10 +20,9 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     private Station items;
     private final View.OnClickListener listener;
 
-    public StationListAdapter(View.OnClickListener listener)
-    {
-        this.listener = listener;
-    }
+    public Station original;
+
+    public StationListAdapter(View.OnClickListener listener) { this.listener = listener; }
 
     public void setStations(Station items)
     {
@@ -62,8 +62,8 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Fields item = items.records.get(position).fields;
-        holder.address.setText(item.getAddress());
-        holder.name.setText(item.getName());
+        holder.address.setText(item.address);
+        holder.name.setText(item.name);
         holder.places.setText(item.getAvailableBikeStand());
 
         if (item.isOpen())
