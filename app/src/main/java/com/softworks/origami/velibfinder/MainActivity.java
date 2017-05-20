@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mAdapter = new StationListAdapter(this);
+        mAdapter = new StationListAdapter(this, getApplicationContext());
         mRecyclerView.setAdapter(mAdapter);
 
         StationFetcher.getInstance().getStations();

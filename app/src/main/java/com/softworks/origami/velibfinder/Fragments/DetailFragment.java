@@ -67,11 +67,19 @@ public class DetailFragment extends Fragment {
     }
 
     private void setFragment(ViewGroup rootView, int pos) {
+        int redString = getResources().getColor(R.color.red);
+        int greenString = getResources().getColor(R.color.green);
+
         TextView name = (TextView) rootView.getRootView().findViewById(R.id.name);
         name.setText(station.records.get(pos).fields.address);
 
         TextView status = (TextView) rootView.getRootView().findViewById(R.id.status);
-        status.setText(station.records.get(pos).fields.isOpen().toString());
+        status.setText(station.records.get(pos).fields.status);
+
+        if (station.records.get(pos).fields.isOpen())
+            status.setTextColor(greenString);
+        else
+            status.setTextColor(redString);
 
         TextView bike_stands = (TextView) rootView.getRootView().findViewById(R.id.bike_stands);
         bike_stands.setText(station.records.get(pos).fields.getAvailableBikeStand());

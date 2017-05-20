@@ -4,4 +4,6 @@
     <string name="loading">Loading ...</string>
     <string name="group_members">Group Members</string>
     <string name="action_share">Share</string>
+    <string name="open">\u2714</string>
+    <string name="close">\u2716</string>
 </resources>

@@ -6,4 +6,6 @@
     <color name="year">#999999</color>
     <color name="title">#222222</color>
     <color name="link">#3498db</color>
+    <color name="red">#e74c3c</color>
+    <color name="green">#2ecc71</color>
 </resources>

@@ -1,6 +1,6 @@
 package com.softworks.origami.velibfinder.Components;
 
-import android.graphics.Color;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,10 +19,14 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 {
     private Station items;
     private final View.OnClickListener listener;
+    private Context context;
 
     public Station original;
 
-    public StationListAdapter(View.OnClickListener listener) { this.listener = listener; }
+    public StationListAdapter(View.OnClickListener listener, Context context) {
+        this.listener = listener;
+        this.context = context;
+    }
 
     public void setStations(Station items)
     {
@@ -61,6 +65,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+
         Fields item = items.records.get(position).fields;
         holder.address.setText(item.address);
         holder.name.setText(item.name);
@@ -68,13 +73,13 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
         if (item.isOpen())
         {
-            holder.status.setText("\u2714");
-            holder.status.setTextColor(Color.parseColor("#2ecc71"));
+            holder.status.setText(context.getString(R.string.open));
+            holder.status.setTextColor(context.getResources().getColor(R.color.green));
         }
         else
         {
-            holder.status.setText("\u2716");
-            holder.status.setTextColor(Color.parseColor("#e74c3c"));
+            holder.status.setText(context.getString(R.string.close));
+            holder.status.setTextColor(context.getResources().getColor(R.color.red));
         }
 
         // save information in holder, we have one type in this adapter
