@@ -84,6 +84,7 @@ public class DetailsActivity extends AppCompatActivity
     public void addString(StringBuilder sb, String header, String msg)
     {
         sb.append(header);
+        sb.append(System.getProperty("line.separator"));
         sb.append(msg);
         sb.append(System.getProperty("line.separator"));
     }
@@ -91,6 +92,9 @@ public class DetailsActivity extends AppCompatActivity
     public void share()
     {
         StringBuilder sb = new StringBuilder();
+
+        sb.append(getResources().getString(R.string.title));
+        sb.append(System.getProperty("line.separator"));
 
         TextView name = (TextView) findViewById(R.id.name);
         addString(sb, getResources().getString(R.string.name),  name.getText().toString());
@@ -109,7 +113,7 @@ public class DetailsActivity extends AppCompatActivity
 
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
         sendIntent.setType("text/plain");
         startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.share
         )));
