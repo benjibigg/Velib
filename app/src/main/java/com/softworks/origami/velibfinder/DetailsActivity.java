@@ -87,6 +87,7 @@ public class DetailsActivity extends AppCompatActivity
         sb.append(System.getProperty("line.separator"));
         sb.append(msg);
         sb.append(System.getProperty("line.separator"));
+        sb.append(System.getProperty("line.separator"));
     }
 
     public void share()
@@ -94,6 +95,7 @@ public class DetailsActivity extends AppCompatActivity
         StringBuilder sb = new StringBuilder();
 
         sb.append(getResources().getString(R.string.title));
+        sb.append(System.getProperty("line.separator"));
         sb.append(System.getProperty("line.separator"));
 
         TextView name = (TextView) findViewById(R.id.name);
@@ -109,7 +111,8 @@ public class DetailsActivity extends AppCompatActivity
         addString(sb, getResources().getString(R.string.address), address.getText().toString());
 
         TextView last_update = (TextView) findViewById(R.id.last_update);
-        addString(sb, getResources().getString(R.string.last_update), last_update.getText().toString());
+        sb.append(getResources().getString(R.string.last_update));
+        sb.append(last_update.getText().toString());
 
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
