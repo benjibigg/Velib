@@ -42,7 +42,7 @@
             android:lineSpacingMultiplier="1.2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/bike_stands" />
+            android:text="@string/available_bike_stands" />
 
         <TextView style="?android:textAppearanceMedium"
             android:padding="16dp"

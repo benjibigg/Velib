@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.softworks.origami.velibfinder.AccessModel.StationFetcher;
 import com.softworks.origami.velibfinder.Fragments.DetailFragment;
@@ -21,7 +22,6 @@ import com.softworks.origami.velibfinder.Models.Station;
 
 public class DetailsActivity extends AppCompatActivity
 {
-    private static final int NUM_PAGES = 5;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
     private Station stations;
@@ -81,8 +81,32 @@ public class DetailsActivity extends AppCompatActivity
         }
     }
 
+    public void addString(StringBuilder sb, String header, String msg)
+    {
+        sb.append(header);
+        sb.append(msg);
+        sb.append(System.getProperty("line.separator"));
+    }
+
     public void share()
     {
+        StringBuilder sb = new StringBuilder();
+
+        TextView name = (TextView) findViewById(R.id.name);
+        addString(sb, getResources().getString(R.string.name),  name.getText().toString());
+
+        TextView status = (TextView) findViewById(R.id.status);
+        addString(sb, getResources().getString(R.string.status), status.getText().toString());
+
+        TextView bike_stands  = (TextView) findViewById(R.id.bike_stands);
+        addString(sb, getResources().getString(R.string.available_bike_stands), bike_stands.getText().toString());
+
+        TextView address = (TextView) findViewById(R.id.address);
+        addString(sb, getResources().getString(R.string.address), address.getText().toString());
+
+        TextView last_update = (TextView) findViewById(R.id.last_update);
+        addString(sb, getResources().getString(R.string.last_update), last_update.getText().toString());
+
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");

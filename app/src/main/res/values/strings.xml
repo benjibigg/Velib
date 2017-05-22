@@ -11,7 +11,6 @@
     <string name="name">Nom de la station :</string>
     <string name="address">Addresse :</string>
     <string name="status">Status de la station :</string>
-    <string name="bike_stands">Nombre de place dans la station :</string>
     <string name="available_bike_stands">Nombre de place disponible dans la station :</string>
     <string name="last_update">Dernier date de mise à jour des informations :</string>
     <string name="open_string">Ouvert</string>
