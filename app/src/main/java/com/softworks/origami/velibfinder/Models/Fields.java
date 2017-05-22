@@ -20,10 +20,10 @@ public class Fields {
     public final String status;
 
     @SerializedName("available_bike_stands")
-    public final int bike_stands;
-
-    @SerializedName("available_bikes")
     public final int available_bike_stands;
+
+    @SerializedName("bike_stands")
+    public final int bike_stands;
 
     @SerializedName("last_update")
     public final Date lastUpdate;

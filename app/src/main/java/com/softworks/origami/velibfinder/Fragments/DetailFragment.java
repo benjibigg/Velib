@@ -74,12 +74,18 @@ public class DetailFragment extends Fragment {
         name.setText(station.records.get(pos).fields.address);
 
         TextView status = (TextView) rootView.getRootView().findViewById(R.id.status);
-        status.setText(station.records.get(pos).fields.status);
+
 
         if (station.records.get(pos).fields.isOpen())
+        {
+            status.setText(getResources().getString(R.string.open_string));
             status.setTextColor(greenString);
+        }
         else
+        {
+            status.setText(getResources().getString(R.string.close_string));
             status.setTextColor(redString);
+        }
 
         TextView bike_stands = (TextView) rootView.getRootView().findViewById(R.id.bike_stands);
         bike_stands.setText(station.records.get(pos).fields.getAvailableBikeStand());
