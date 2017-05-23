@@ -22,8 +22,6 @@ import com.softworks.origami.velibfinder.Models.Station;
 
 public class DetailsActivity extends AppCompatActivity
 {
-    private ViewPager mPager;
-    private PagerAdapter mPagerAdapter;
     private Station stations;
 
     @Override
@@ -34,8 +32,8 @@ public class DetailsActivity extends AppCompatActivity
         stations = StationFetcher.getInstance().stationList.getValue();
 
         // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) findViewById(R.id.pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
+        ViewPager mPager = (ViewPager) findViewById(R.id.pager);
+        PagerAdapter mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -81,7 +79,7 @@ public class DetailsActivity extends AppCompatActivity
         }
     }
 
-    public void addString(StringBuilder sb, String header, String msg)
+    private void addString(StringBuilder sb, String header, String msg)
     {
         sb.append(header);
         sb.append(System.getProperty("line.separator"));
@@ -90,7 +88,7 @@ public class DetailsActivity extends AppCompatActivity
         sb.append(System.getProperty("line.separator"));
     }
 
-    public void share()
+    private void share()
     {
         StringBuilder sb = new StringBuilder();
 

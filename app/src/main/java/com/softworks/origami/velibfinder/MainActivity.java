@@ -20,13 +20,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     private RecyclerView mRecyclerView;
     private StationListAdapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        RecyclerView.LayoutManager mLayoutManager;
 
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setHasFixedSize(true);
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     }
 
 
-    public void showMembers()
+    private void showMembers()
     {
         Intent intent = new Intent(this, MembersActivity.class);
         startActivity(intent);

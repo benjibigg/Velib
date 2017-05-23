@@ -7,14 +7,13 @@
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:paddingLeft="10dp"
+        android:padding="10dp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:paddingTop="10dp"
             android:layout_height="wrap_content">
             <TextView style="?android:textAppearanceListItem"
                 android:padding="2dp"
@@ -90,6 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <ImageView
+                    android:contentDescription="@string/address"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/map"/>

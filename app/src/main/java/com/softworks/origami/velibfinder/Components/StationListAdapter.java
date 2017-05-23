@@ -1,6 +1,7 @@
 package com.softworks.origami.velibfinder.Components;
 
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +20,7 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 {
     private Station items;
     private final View.OnClickListener listener;
-    private Context context;
+    private final Context context;
 
     public Station original;
 
@@ -41,10 +42,10 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
 
     static class ViewHolder extends RecyclerView.ViewHolder
     {
-        private TextView address;
-        private TextView name;
-        private TextView places;
-        private TextView status;
+        private final TextView address;
+        private final TextView name;
+        private final TextView places;
+        private final TextView status;
 
         public ViewHolder(View v) {
             super(v);
@@ -74,12 +75,12 @@ public class StationListAdapter extends RecyclerView.Adapter<StationListAdapter.
         if (item.isOpen())
         {
             holder.status.setText(context.getString(R.string.open));
-            holder.status.setTextColor(context.getResources().getColor(R.color.green));
+            holder.status.setTextColor(ContextCompat.getColor(context, R.color.green));
         }
         else
         {
             holder.status.setText(context.getString(R.string.close));
-            holder.status.setTextColor(context.getResources().getColor(R.color.red));
+            holder.status.setTextColor(ContextCompat.getColor(context, R.color.red));
         }
 
         // save information in holder, we have one type in this adapter

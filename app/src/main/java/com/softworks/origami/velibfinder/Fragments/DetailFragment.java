@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +22,7 @@ import com.softworks.origami.velibfinder.R;
  */
 
 public class DetailFragment extends Fragment {
-    Station station;
+    private Station station;
 
     public DetailFragment() {
     }
@@ -44,7 +45,7 @@ public class DetailFragment extends Fragment {
         }
     }
 
-    public void showMembers() {
+    private void showMembers() {
         Intent intent = new Intent(getActivity(), MembersActivity.class);
         startActivity(intent);
     }
@@ -67,8 +68,8 @@ public class DetailFragment extends Fragment {
     }
 
     private void setFragment(ViewGroup rootView, int pos) {
-        int redString = getResources().getColor(R.color.red);
-        int greenString = getResources().getColor(R.color.green);
+        int redString = ContextCompat.getColor(getContext(), R.color.red);
+        int greenString = ContextCompat.getColor(getContext(), R.color.green);
 
         TextView name = (TextView) rootView.getRootView().findViewById(R.id.name);
         name.setText(station.records.get(pos).fields.name);

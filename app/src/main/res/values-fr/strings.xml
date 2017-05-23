@@ -2,7 +2,7 @@
 <resources>
     <string name="action_search">Rechercher</string>
     <string name="group_members">Membres du groupe</string>
-    <string name="loading">Chargement ...</string>
+    <string name="loading">Chargement …</string>
     <string name="action_share">Partager</string>
     <string name="open_string">Ouvert</string>
     <string name="share">Partager la station avec &#8230;</string>

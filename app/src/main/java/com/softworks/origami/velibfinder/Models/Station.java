@@ -20,7 +20,7 @@ public class Station {
         for (Records record : target.records)
         {
             Records newRecord = new Records();
-            Fields f = new Fields(
+            newRecord.fields = new Fields(
                     record.fields.name,
                     record.fields.address,
                     record.fields.status,
@@ -28,7 +28,6 @@ public class Station {
                     record.fields.bike_stands,
                     record.fields.lastUpdate
             );
-            newRecord.fields = f;
             newStation.records.add(newRecord);
         }
         return newStation;

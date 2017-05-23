@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  * Created by Benjamin on 12/05/2017.
  */
 
-public class RetrofitFactory {
+class RetrofitFactory {
     //public static final String BASE_URL = "https://opendata.paris.fr";
     private static Retrofit retrofit = null;
 

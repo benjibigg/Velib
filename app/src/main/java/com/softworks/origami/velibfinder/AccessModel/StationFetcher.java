@@ -12,11 +12,9 @@ import rx.subjects.BehaviorSubject;
 
 public class StationFetcher
 {
-    private static final String TAG = "StationFetcher";
-
     private static StationFetcher fetcher = null;
 
-    public BehaviorSubject<Station> stationList = BehaviorSubject.create();
+    public final BehaviorSubject<Station> stationList = BehaviorSubject.create();
 
     public static StationFetcher getInstance()
     {
@@ -30,6 +28,6 @@ public class StationFetcher
             .stationList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(stations -> stationList.onNext(stations));
+            .subscribe(stationList::onNext);
     }
 }

@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by franckzhang on 0516//2017.
@@ -39,7 +40,7 @@ public class Fields {
     }
 
     public String getLastUpdate() {
-        SimpleDateFormat simpleDate =  new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE);
         return simpleDate.format(lastUpdate);
     }
 
