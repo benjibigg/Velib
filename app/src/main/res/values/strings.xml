@@ -4,16 +4,18 @@
     <string name="loading">Loading &#8230;</string>
     <string name="group_members">Group Members</string>
     <string name="action_share">Share</string>
-    <string name="open">\u2714</string>
-    <string name="close">\u2716</string>
-    <string name="share">Partager la station avec &#8230;</string>
+    <string name="open" translatable="false">\u2714</string>
+    <string name="close" translatable="false">\u2716</string>
+    <string name="share">Share the station with &#8230;</string>
 
-    <string name="name">Nom de la station :</string>
-    <string name="address">Addresse :</string>
-    <string name="status">Status de la station :</string>
-    <string name="available_bike_stands">Nombre de place disponible dans la station :</string>
-    <string name="last_update">Dernier date de mise à jour des informations :</string>
-    <string name="open_string">Ouvert</string>
-    <string name="close_string">Fermé</string>
-    <string name="title">Salut je te partage une station :</string>
+    <string name="name">Station name</string>
+    <string name="address">Address</string>
+    <string name="status">Station status</string>
+    <string name="available_bike_stands">Available space in the station</string>
+    <string name="last_update">Last information update date</string>
+    <string name="open_string">Open</string>
+    <string name="close_string">Close</string>
+    <string name="title">Hi, check that station :</string>
+    <string name="member_benji" translatable="false">Benjamin Bigaré bigare_b</string>
+    <string name="member_franck" translatable="false">Franck Zhang zhang_f</string>
 </resources>

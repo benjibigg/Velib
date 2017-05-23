@@ -1,84 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
+        android:paddingLeft="10dp"
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:paddingTop="10dp"
+            android:layout_height="wrap_content">
+            <TextView style="?android:textAppearanceListItem"
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name" />
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/name"/>
+            <TextView
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="nom de la station"
+                android:id="@+id/name"/>
+        </LinearLayout>
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/status" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="?android:textAppearanceListItem"
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/status" />
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/status"/>
+            <TextView
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="nom de la station"
+                android:id="@+id/status"/>
+        </LinearLayout>
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/available_bike_stands" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="?android:textAppearanceListItem"
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/available_bike_stands" />
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bike_stands"/>
+            <TextView
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="nom de la station"
+                android:id="@+id/bike_stands"/>
+        </LinearLayout>
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/address" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="?android:textAppearanceListItem"
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/address" />
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/link"
-            android:id="@+id/address"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/map"/>
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/last_update" />
+                <TextView
+                    android:padding="4dp"
+                    android:lineSpacingMultiplier="1.2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="nom de la station"
+                    android:textColor="@color/link"
+                    android:id="@+id/address"/>
+            </LinearLayout>
+        </LinearLayout>
 
-        <TextView style="?android:textAppearanceMedium"
-            android:padding="16dp"
-            android:lineSpacingMultiplier="1.2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/last_update"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView style="?android:textAppearanceListItem"
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_update" />
+
+            <TextView
+                android:padding="4dp"
+                android:lineSpacingMultiplier="1.2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="nom de la station"
+                android:id="@+id/last_update"/>
+        </LinearLayout>
     </android.support.v7.widget.LinearLayoutCompat>
 
 

@@ -111,8 +111,7 @@ public class DetailsActivity extends AppCompatActivity
         addString(sb, getResources().getString(R.string.address), address.getText().toString());
 
         TextView last_update = (TextView) findViewById(R.id.last_update);
-        sb.append(getResources().getString(R.string.last_update));
-        sb.append(last_update.getText().toString());
+        addString(sb, getResources().getString(R.string.last_update), last_update.getText().toString());
 
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
