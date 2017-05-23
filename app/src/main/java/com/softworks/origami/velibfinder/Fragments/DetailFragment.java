@@ -71,7 +71,7 @@ public class DetailFragment extends Fragment {
         int greenString = getResources().getColor(R.color.green);
 
         TextView name = (TextView) rootView.getRootView().findViewById(R.id.name);
-        name.setText(station.records.get(pos).fields.address);
+        name.setText(station.records.get(pos).fields.name);
 
         TextView status = (TextView) rootView.getRootView().findViewById(R.id.status);
 
