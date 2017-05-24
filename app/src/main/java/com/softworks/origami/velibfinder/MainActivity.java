@@ -91,14 +91,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     @Override
     public boolean onQueryTextChange(String newText) {
         Station displayedStations = mAdapter.getStations();
-        displayedStations.records.clear();
-        for (Records record : mAdapter.original.records)
+        if (displayedStations != null)
         {
-            String address =  record.fields.address;
-            if (address.toLowerCase().contains(newText.toLowerCase()))
-                displayedStations.records.add(record);
+            displayedStations.records.clear();
+            for (Records record : mAdapter.original.records)
+            {
+                String address =  record.fields.address;
+                if (address.toLowerCase().contains(newText.toLowerCase()))
+                    displayedStations.records.add(record);
+            }
+            mAdapter.setStations(displayedStations);
         }
-        mAdapter.setStations(displayedStations);
         return false;
     }
 
